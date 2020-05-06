@@ -33,7 +33,7 @@ public class Adventure {
 
         playerName = myScanner.nextLine();
 
-        System.out.println("Are you ready to start the game " + playerName + "?" );
+        System.out.println("Are you ready to start the game " + playerName + "? " );
 
 
 
