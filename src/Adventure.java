@@ -3,13 +3,17 @@ import java.util.Scanner;
 public class Adventure {
 
 
+
+
     public static void main(String[] args) {
 
         startGame();
+        deathStar();
+
+
+
 
     }
-
-
 
 
 
@@ -35,11 +39,9 @@ public class Adventure {
 
         System.out.println("Are you ready to start the game " + playerName + "? " );
 
+    }
 
-
-
-
-
+    public static void deathStar() {
 
 
     }
