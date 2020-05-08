@@ -178,6 +178,16 @@ public class Adventure {
     }
 
     public void addHP (){
+        int monsterDamage = 0;
+        monsterDamage = new java.util.Random().nextInt(2);
+        if ( monsterDamage == 0) {
+            System.out.println("The AT-ST missed!");
+        } else {
+            System.out.println("The AT-ST attacked you and did " + monsterDamage + " damage.");
+        }
+
+        playerHP = playerHP - monsterDamage;
+
         if (playerHP < initialPlayerHP && potions >= 1) {
             playerHP += 1;
             potions -= 1;
@@ -207,9 +217,16 @@ public class Adventure {
         } else if (monsterHP > 0){
             int monsterDamage = 0;
             monsterDamage = new java.util.Random().nextInt(2);
-
-            System.out.println("The AT-ST attacked you and did " + monsterDamage + " damage.");
-            System.out.println("You attacked the AT-ST and did " + playerDamage + " damage.");
+            if ( monsterDamage == 0) {
+                System.out.println("The AT-ST missed!");
+            } else {
+                System.out.println("The AT-ST attacked you and did " + monsterDamage + " damage.");
+            }
+            if ( playerDamage == 0) {
+                System.out.println("You missed! Get better noob!");
+            } else {
+                System.out.println("You attacked the AT-ST and did " + playerDamage + " damage.");
+            }
 
             playerHP = playerHP - monsterDamage;
 
