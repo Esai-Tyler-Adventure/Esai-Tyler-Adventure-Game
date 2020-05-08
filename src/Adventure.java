@@ -54,11 +54,27 @@ public class Adventure {
         playerName = myScanner.nextLine();
 
         System.out.println("How many HP do you want?");
+
+        do {
+            if (!myScanner.hasNextInt()) {
+                String input = myScanner.nextLine();
+                System.out.printf("%s is not a number.", input);
+            }
+        } while (!myScanner.hasNextInt());
+
         initialPlayerHP = myScanner.nextInt();
         System.out.println("Player HP set to: " + initialPlayerHP);
         playerHP = initialPlayerHP;
 
         System.out.println("How many HP should he enemy have?");
+
+        do {
+            if (!myScanner.hasNextInt()) {
+                String input = myScanner.nextLine();
+                System.out.printf("%s is not a number.", input);
+            }
+        } while (!myScanner.hasNextInt());
+
         monsterHP = myScanner.nextInt();
         System.out.println("Monster HP set to: " + monsterHP);
     }
@@ -75,13 +91,23 @@ public class Adventure {
         System.out.println("2: Stay");
         System.out.println("\n------------------------------------------------------------------\n");
 
+        do {
+            if (!myScanner.hasNextInt()) {
+                String input = myScanner.nextLine();
+                System.out.printf("%s is not a number.", input);
+            }
+        } while (!myScanner.hasNextInt());
+
         choice = myScanner.nextInt();
 
-        if(choice==1) {
+        if(choice == 1) {
             deathStar();
-        } else if(choice ==2){
+        } else if(choice == 2){
             System.out.println("You had to leave, or die...");
             chambers();
+        } else if (choice != 1 || choice != 2 ) {
+            System.out.println("Please enter a different number.");
+            room();
         }
     }
 
@@ -120,12 +146,22 @@ public class Adventure {
         System.out.println();
         System.out.println("2. Run");
 
+        do {
+            if (!myScanner.hasNextInt()) {
+                String input = myScanner.nextLine();
+                System.out.printf("%s is not a number.", input);
+            }
+        } while (!myScanner.hasNextInt());
+
         choice = myScanner.nextInt();
 
-        if(choice==1) {
+        if(choice == 1) {
             fight();
-        } else {
+        } else if (choice == 2){
             chambers();
+        } else if (choice != 1 || choice != 2 ) {
+            System.out.println("Please enter a different number.");
+            deathStar();
         }
     }
 
@@ -166,14 +202,24 @@ public class Adventure {
         System.out.println("3: Run like a coward");
         System.out.println("\n------------------------------------------------------------------\n");
 
+        do {
+            if (!myScanner.hasNextInt()) {
+                String input = myScanner.nextLine();
+                System.out.printf("%s is not a number.", input);
+            }
+        } while (!myScanner.hasNextInt());
+
         choice = myScanner.nextInt();
 
-        if(choice==1) {
+        if(choice == 1) {
             attack();
-        } else if (choice==2) {
+        } else if (choice == 2) {
             addHP();
-        }else {
+        }else if (choice == 3){
             chambers();
+        } else if (choice != 1 || choice != 2 || choice != 3) {
+            System.out.println("Please enter a different number.");
+            fight();
         }
     }
 
