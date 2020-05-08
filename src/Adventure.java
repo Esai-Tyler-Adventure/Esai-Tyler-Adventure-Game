@@ -203,9 +203,6 @@ public class Adventure {
 
             playerHP = playerHP - monsterDamage;
 
-//            System.out.println("Player HP: " + playerHP);
-//            System.out.println("AT-ST HP: " + monsterHP);
-
             if ( playerHP < 1) {
                 dead();
             } else if (playerHP > 0) {
