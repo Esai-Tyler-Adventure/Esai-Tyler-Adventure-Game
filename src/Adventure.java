@@ -58,7 +58,7 @@ public class Adventure {
         do {
             if (!myScanner.hasNextInt()) {
                 String input = myScanner.nextLine();
-                System.out.printf("%s is not a number.", input);
+                System.out.printf("%s is not a proper input.%n", input);
             }
         } while (!myScanner.hasNextInt());
 
@@ -71,7 +71,7 @@ public class Adventure {
         do {
             if (!myScanner.hasNextInt()) {
                 String input = myScanner.nextLine();
-                System.out.printf("%s is not a number.", input);
+                System.out.printf("%s is not a proper input.%n", input);
             }
         } while (!myScanner.hasNextInt());
 
@@ -94,7 +94,7 @@ public class Adventure {
         do {
             if (!myScanner.hasNextInt()) {
                 String input = myScanner.nextLine();
-                System.out.printf("%s is not a number.", input);
+                System.out.printf("%s is not a proper input.%n", input);
             }
         } while (!myScanner.hasNextInt());
 
@@ -106,7 +106,7 @@ public class Adventure {
             System.out.println("You had to leave, or die...");
             chambers();
         } else if (choice != 1 || choice != 2 ) {
-            System.out.println("Please enter a different number.");
+            System.out.println("That is not a choice.");
             room();
         }
     }
@@ -149,7 +149,7 @@ public class Adventure {
         do {
             if (!myScanner.hasNextInt()) {
                 String input = myScanner.nextLine();
-                System.out.printf("%s is not a number.", input);
+                System.out.printf("%s is not a proper input.%n", input);
             }
         } while (!myScanner.hasNextInt());
 
@@ -160,7 +160,7 @@ public class Adventure {
         } else if (choice == 2){
             chambers();
         } else if (choice != 1 || choice != 2 ) {
-            System.out.println("Please enter a different number.");
+            System.out.println("That is not a choice.");
             deathStar();
         }
     }
@@ -205,7 +205,7 @@ public class Adventure {
         do {
             if (!myScanner.hasNextInt()) {
                 String input = myScanner.nextLine();
-                System.out.printf("%s is not a number.", input);
+                System.out.printf("%s is not a proper input.%n", input);
             }
         } while (!myScanner.hasNextInt());
 
@@ -218,7 +218,7 @@ public class Adventure {
         }else if (choice == 3){
             chambers();
         } else if (choice != 1 || choice != 2 || choice != 3) {
-            System.out.println("Please enter a different number.");
+            System.out.println("That is not a choice.");
             fight();
         }
     }
