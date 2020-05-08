@@ -5,17 +5,13 @@ public class Adventure {
 
     int playerHP;
     int monsterHP;
+    int potions;
+    int choice;
     String playerWeapon;
     String playerName;
 
-    int choice;
-
-
-
-
     public static void main(String[] args) {
         Adventure game;
-
         game = new Adventure();
         game.intro();
         game.startGame();
@@ -50,24 +46,16 @@ public class Adventure {
     }
 
     public void startGame() {
-
         playerHP = 10;
-        monsterHP= 10;
-
-
+        monsterHP = 15;
+        potions = 2;
         playerWeapon = "Blaster";
 
-
-        System.out.println("What is your name rebel ?");
-
+        System.out.println("What is your name rebel?");
         playerName = myScanner.nextLine();
-
     }
 
     public void room(){
-
-
-
         System.out.println("\n------------------------------------------------------------------\n");
         System.out.println("You wake up in your room confused, you can only remember your name is " + playerName + ".");
         System.out.println("\n------------------------------------------------------------------\n");
@@ -87,8 +75,6 @@ public class Adventure {
             System.out.println("You had to leave, or die...");
             chambers();
         }
-
-
     }
 
     public void deathStar() {
@@ -119,7 +105,6 @@ public class Adventure {
                 "            _  ,-=\"_\"^K_/ \n" +
                 "           [ ][.-~\" ~\"-.]\n" +
                 "    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-        System.out.println();
         System.out.println("An AT-ST Walker is in the middle of the foyer.");
         System.out.println("He sees you! What are you going to do?");
         System.out.println();
@@ -137,7 +122,6 @@ public class Adventure {
     }
 
     public void fight() {
-
         System.out.println("" +
                 "       ________________\n" +
                 "     |'-.--._ _________:\n" +
@@ -164,17 +148,14 @@ public class Adventure {
                 "     _/_\\_            [ -'-.__\n" +
                 "snd <]   \\>            \\_____.>\n" +
                 "      \\__/");
-        System.out.println();
         System.out.println("\n------------------------------------------------------------------\n");
         System.out.println("Your HP: "+ playerHP);
         System.out.println("AT-ST HP: " + monsterHP);
-        System.out.println();
         System.out.println("\n1: Attack");
         System.out.println();
-        System.out.println("2: Drink Jabba Juice - +1 HP");
+        System.out.println("2: Drink Jabba Juice - +1 HP ("+ potions +" left)");
         System.out.println();
         System.out.println("3: Run like a coward");
-
         System.out.println("\n------------------------------------------------------------------\n");
 
         choice = myScanner.nextInt();
@@ -186,20 +167,20 @@ public class Adventure {
         }else {
             chambers();
         }
-
     }
 
     public void addHP (){
-
-        if (playerHP < 10) {
+        if (playerHP < 10 && potions >= 1) {
             playerHP += 1;
+            potions -= 1;
             fight();
-        }else{
+        } else if (potions == 0) {
+            System.out.println("You have no potions left.");
+            fight();
+        } else {
             System.out.println("You are at full health already... cheater");
             fight();
         }
-
-
     }
 
     public void attack() {
@@ -209,24 +190,21 @@ public class Adventure {
             playerDamage = new java.util.Random().nextInt(5);
         }
 
-        System.out.println("You attacked the AT-ST and did " + playerDamage);
-
         monsterHP = monsterHP - playerDamage;
-
-        System.out.println("AT-ST HP: " + monsterHP);
 
         if(monsterHP < 1) {
             ending();
         } else if (monsterHP > 0){
             int monsterDamage = 0;
-
             monsterDamage = new java.util.Random().nextInt(2);
 
             System.out.println("The AT-ST attacked you and did " + monsterDamage);
+            System.out.println("You attacked the AT-ST and did " + playerDamage);
 
             playerHP = playerHP - monsterDamage;
 
-            System.out.println("Player HP: " + playerHP);
+//            System.out.println("Player HP: " + playerHP);
+//            System.out.println("AT-ST HP: " + monsterHP);
 
             if ( playerHP < 1) {
                 dead();
