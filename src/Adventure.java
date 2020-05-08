@@ -12,12 +12,10 @@ public class Adventure {
     String playerName;
 
     public static void main(String[] args) {
-        Adventure game;
-        game = new Adventure();
+        Adventure game = new Adventure();
         game.intro();
         game.startGame();
         game.room();
-
     }
 
     public void intro(){
@@ -66,7 +64,7 @@ public class Adventure {
         System.out.println("Player HP set to: " + initialPlayerHP);
         playerHP = initialPlayerHP;
 
-        System.out.println("How many HP should he enemy have?");
+        System.out.println("How many HP should the enemy have?");
 
         do {
             if (!myScanner.hasNextInt()) {
@@ -113,7 +111,6 @@ public class Adventure {
 
     public void deathStar() {
         System.out.println(
-
                 "            _,.-\"T\n" +
                 "      _.--{~    :l\n" +
                 "    c\"     `.    :I\n" +
@@ -166,7 +163,7 @@ public class Adventure {
     }
 
     public void fight() {
-        System.out.println("" +
+        System.out.println(
                 "       ________________\n" +
                 "     |'-.--._ _________:\n" +
                 "     |  /    |  __    __\\\n" +
@@ -215,7 +212,7 @@ public class Adventure {
             attack();
         } else if (choice == 2) {
             addHP();
-        }else if (choice == 3){
+        } else if (choice == 3){
             chambers();
         } else if (choice != 1 || choice != 2 || choice != 3) {
             System.out.println("That is not a choice.");
@@ -243,7 +240,7 @@ public class Adventure {
             System.out.println("You have no Jabba Juice left.");
             fight();
         } else {
-            System.out.println("You are at full health already... cheater");
+            System.out.println("You are at full health already... cheater.");
             fight();
         }
     }
@@ -314,7 +311,7 @@ public class Adventure {
 
     public void ending() {
         System.out.println("Good job soldier, now leave, may the force be with you!");
-        System.out.println("" +
+        System.out.println(
                 "                    ____\n" +
                 "                 _.' :  `._\n" +
                 "             .-.'`.  ;   .'`.-.\n" +
@@ -347,6 +344,6 @@ public class Adventure {
     }
 
     public void dead() {
-        System.out.println("You Died.");
+        System.out.println("You Died. ¯\\_(ツ)_/¯");
     }
 }
