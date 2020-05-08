@@ -59,7 +59,7 @@ public class Adventure {
         System.out.println("\n------------------------------------------------------------------\n");
         System.out.println("You wake up in your room confused, you can only remember your name is " + playerName + ".");
         System.out.println("\n------------------------------------------------------------------\n");
-        System.out.println("You find a blaster in your hand and some jabba juice next to you.");
+        System.out.println("You find a Blaster in your hand and some Jabba Juice next to you.");
         System.out.println("You take both items with you. You need to get out quick!");
         System.out.println();
         System.out.println("1: Get out!");
@@ -173,9 +173,10 @@ public class Adventure {
         if (playerHP < 10 && potions >= 1) {
             playerHP += 1;
             potions -= 1;
+            System.out.println("Drank a Jabba Juice! Gained +1 HP.");
             fight();
         } else if (potions == 0) {
-            System.out.println("You have no potions left.");
+            System.out.println("You have no Jabba Juice left.");
             fight();
         } else {
             System.out.println("You are at full health already... cheater");
@@ -193,13 +194,14 @@ public class Adventure {
         monsterHP = monsterHP - playerDamage;
 
         if(monsterHP < 1) {
+            System.out.println("You defeated the AT-ST!");
             ending();
         } else if (monsterHP > 0){
             int monsterDamage = 0;
             monsterDamage = new java.util.Random().nextInt(2);
 
-            System.out.println("The AT-ST attacked you and did " + monsterDamage);
-            System.out.println("You attacked the AT-ST and did " + playerDamage);
+            System.out.println("The AT-ST attacked you and did " + monsterDamage + " damage.");
+            System.out.println("You attacked the AT-ST and did " + playerDamage + " damage.");
 
             playerHP = playerHP - monsterDamage;
 
