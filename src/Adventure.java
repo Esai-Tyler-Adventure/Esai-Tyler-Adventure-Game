@@ -4,6 +4,7 @@ public class Adventure {
     Scanner myScanner = new Scanner(System.in);
 
     int playerHP;
+    int initialPlayerHP;
     int monsterHP;
     int potions;
     int choice;
@@ -46,13 +47,20 @@ public class Adventure {
     }
 
     public void startGame() {
-        playerHP = 10;
-        monsterHP = 15;
         potions = 2;
         playerWeapon = "Blaster";
 
         System.out.println("What is your name rebel?");
         playerName = myScanner.nextLine();
+
+        System.out.println("How many HP do you want?");
+        initialPlayerHP = myScanner.nextInt();
+        System.out.println("Player HP set to: " + initialPlayerHP);
+        playerHP = initialPlayerHP;
+
+        System.out.println("How many HP should he enemy have?");
+        monsterHP = myScanner.nextInt();
+        System.out.println("Monster HP set to: " + monsterHP);
     }
 
     public void room(){
@@ -170,7 +178,7 @@ public class Adventure {
     }
 
     public void addHP (){
-        if (playerHP < 10 && potions >= 1) {
+        if (playerHP < initialPlayerHP && potions >= 1) {
             playerHP += 1;
             potions -= 1;
             System.out.println("Drank a Jabba Juice! Gained +1 HP.");
@@ -238,7 +246,7 @@ public class Adventure {
                 "          /___.-/_|-'   \\  \\\n" +
                 "                         '-'");
 
-        System.out.println("Darth Vader captured you, you should have listened...");
+        System.out.println("Darth Vader captured you, you shouldn't have been a coward...");
     }
 
     public void ending() {
