@@ -3,6 +3,8 @@ import java.util.Scanner;
 public class Adventure {
     Scanner myScanner = new Scanner(System.in);
 
+    //Initializing empty variables.
+
     int playerHP;
     int initialPlayerHP;
     int monsterHP;
@@ -12,6 +14,7 @@ public class Adventure {
     String playerName;
 
     public static void main(String[] args) {
+        //Creating new instance of Adventure class.
         Adventure game = new Adventure();
         game.intro();
         game.startGame();
@@ -53,6 +56,8 @@ public class Adventure {
 
         System.out.println("How many HP do you want?");
 
+        //Checks to see if input is proper.
+
         do {
             if (!myScanner.hasNextInt()) {
                 String input = myScanner.nextLine();
@@ -60,11 +65,16 @@ public class Adventure {
             }
         } while (!myScanner.hasNextInt());
 
+        //Player HP
+
         initialPlayerHP = myScanner.nextInt();
         System.out.println("Player HP set to: " + initialPlayerHP);
         playerHP = initialPlayerHP;
 
         System.out.println("How many HP should the enemy have?");
+
+        //Enemy HP
+        //Checks to see if input is proper.
 
         do {
             if (!myScanner.hasNextInt()) {
@@ -89,6 +99,8 @@ public class Adventure {
         System.out.println("2: Stay");
         System.out.println("\n------------------------------------------------------------------\n");
 
+        //Checks to see if input is proper.
+
         do {
             if (!myScanner.hasNextInt()) {
                 String input = myScanner.nextLine();
@@ -103,6 +115,9 @@ public class Adventure {
         } else if(choice == 2){
             System.out.println("You had to leave, or die...");
             chambers();
+
+        //Makes sure user enters correct choice.
+
         } else if (choice != 1 || choice != 2 ) {
             System.out.println("That is not a choice.");
             room();
@@ -143,6 +158,8 @@ public class Adventure {
         System.out.println();
         System.out.println("2. Run");
 
+        //Checks to see if input is proper.
+
         do {
             if (!myScanner.hasNextInt()) {
                 String input = myScanner.nextLine();
@@ -156,6 +173,9 @@ public class Adventure {
             fight();
         } else if (choice == 2){
             chambers();
+
+        // Makes sure user enters correct choice.
+
         } else if (choice != 1 || choice != 2 ) {
             System.out.println("That is not a choice.");
             deathStar();
@@ -199,6 +219,8 @@ public class Adventure {
         System.out.println("3: Run like a coward");
         System.out.println("\n------------------------------------------------------------------\n");
 
+        //Checks to see if input is proper.
+
         do {
             if (!myScanner.hasNextInt()) {
                 String input = myScanner.nextLine();
@@ -214,6 +236,9 @@ public class Adventure {
             addHP();
         } else if (choice == 3){
             chambers();
+
+        //Makes sure user enters a correct choice.
+
         } else if (choice != 1 || choice != 2 || choice != 3) {
             System.out.println("That is not a choice.");
             fight();
@@ -221,6 +246,9 @@ public class Adventure {
     }
 
     public void addHP (){
+
+        //Gives the Enemy a chance to attack even if you drink a Juice to gain hp to prevent spamming HP.
+
         int monsterDamage = 0;
         monsterDamage = new java.util.Random().nextInt(2);
         if ( monsterDamage == 0) {
@@ -230,6 +258,8 @@ public class Adventure {
         }
 
         playerHP = playerHP - monsterDamage;
+
+        //Gives player HP if they have enough potions. Doesn't allow them to use potions at full health.
 
         if (playerHP < initialPlayerHP && potions >= 1) {
             playerHP += 1;
@@ -248,11 +278,15 @@ public class Adventure {
     public void attack() {
         int playerDamage = 0;
 
+        //If the players weapon is a Blaster they do this damage. Allows us to implement other weapons.
+
         if(playerWeapon.equals("Blaster")) {
             playerDamage = new java.util.Random().nextInt(5);
         }
 
         monsterHP = monsterHP - playerDamage;
+
+        //Continues fight if enemy has enough HP to live.
 
         if(monsterHP < 1) {
             System.out.println("You defeated the AT-ST!");
@@ -272,6 +306,8 @@ public class Adventure {
             }
 
             playerHP = playerHP - monsterDamage;
+
+            //Continues fight if player has enough HP to live.
 
             if ( playerHP < 1) {
                 dead();
